@@ -4,6 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#090d14">
+    <script>
+      (() => {
+        const savedTheme = localStorage.getItem("portfolio-theme");
+        const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+        document.documentElement.dataset.theme = savedTheme === "light" || savedTheme === "dark"
+          ? savedTheme
+          : (prefersLight ? "light" : "dark");
+      })();
+    </script>
     <meta name="description" content="Anderson 'Anzy' Caleb is a full-stack developer and backend engineer in Abuja, Nigeria, building contract-first backends and real products with startup teams.">
     <title>Anderson “Anzy” Caleb | Full-Stack Developer & Backend Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,6 +33,10 @@
         <nav id="primary-navigation" class="nav-links" aria-label="Primary navigation">
           <a href="#work">Work</a><a href="#services">What I do</a><a href="#about">About</a><a href="#contact">Contact</a>
         </nav>
+        <button class="theme-toggle" type="button" aria-label="Switch to light mode" title="Switch to light mode">
+          <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path></svg>
+          <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 15.5A8.5 8.5 0 0 1 8.5 3.5 8.5 8.5 0 1 0 20.5 15.5Z"></path></svg>
+        </button>
         <a class="talk-link" href="mailto:caleb1475@gmail.com">Let's talk <span aria-hidden="true">↗</span></a>
       </header>
 
@@ -59,7 +72,7 @@
           <div class="intro-text">
             <p>I'm a final-year Software Engineering student at <strong>AFRIHUB Global Distance Learning Institute</strong> in Abuja, and a backend-first engineer who ships deployed products, not just tutorials.</p>
             <p>As CTO and co-founder of <strong>Doowla Technologies</strong>, I'm building fintech payment infrastructure. At <strong>Officeroom</strong>, I lead a four-developer team delivering a contract-first OpenAPI backend. I own authentication, setup, roles and permissions, and merge every team PR.</p>
-            <p>I also run <strong>Business365Days</strong> and teach coding under the <strong>Anzy.dev</strong> brand. I like clear contracts, dependable systems, and work that reaches real users.</p>
+            <p>I like clear contracts, dependable systems, and work that reaches real users.</p>
             <div class="role-tags"><span>CTO · Doowla Technologies · 15% equity</span><span>CTO · Officeroom · 25% equity</span></div>
           </div>
         </section>

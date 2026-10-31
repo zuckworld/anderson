@@ -1,5 +1,22 @@
 const menuButton = document.querySelector(".menu-toggle");
 const navLinks = document.querySelector(".nav-links");
+const themeButton = document.querySelector(".theme-toggle");
+const themeMeta = document.querySelector('meta[name="theme-color"]');
+
+const setTheme = (theme, persist = false) => {
+  document.documentElement.dataset.theme = theme;
+  const nextLabel = theme === "dark" ? "Switch to light mode" : "Switch to dark mode";
+  themeButton?.setAttribute("aria-label", nextLabel);
+  themeButton?.setAttribute("title", nextLabel);
+  themeMeta?.setAttribute("content", theme === "dark" ? "#090d14" : "#f7f9f5");
+  if (persist) localStorage.setItem("portfolio-theme", theme);
+};
+
+setTheme(document.documentElement.dataset.theme || "dark");
+themeButton?.addEventListener("click", () => {
+  const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  setTheme(nextTheme, true);
+});
 
 menuButton?.addEventListener("click", () => {
   const isOpen = navLinks?.classList.toggle("is-open") ?? false;
